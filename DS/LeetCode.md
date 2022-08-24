@@ -95,62 +95,57 @@ public:
 };
 ```
 
-
-
-# 3.C++继承问题
-
-## 3.1三目运算符
+## 2.3 istringstream
 
 ```c++
-class FSStateBase
-{
+class Solution {
 public:
-    FSStateBase(const FSStateBase & other)
-    {
-        cout << "base copy constructor called" << endl;
+    string solveEquation(string equation) {
+        istringstream ss(equation);
+        int x_index = -1,n_index = 1, xNum = 0, Num = 0, tmpNume = 0;
+        for(char ch; ss >> ch;)
+        {
+            if(ch == '+')
+            {
+                n_index = 1;
+                
+            }
+            else if(ch == '-')
+            {
+                n_index = -1;
+            }
+            else if(ch == '=')
+            {
+                
+                n_index = 1;
+                x_index = 1;
+            }
+            else if(ch == 'x')
+            {
+                xNum -= x_index*n_index;
+            }
+            else
+            {
+                ss.unget();//往回退一步
+                ss >> tmpNume;
+                if(ss.peek() == 'x')//查看ss流的下一个
+                {
+                    ss.get();//获取下一个字符
+                    xNum -= x_index*n_index*tmpNume;
+                }
+                else
+                {
+                    Num += x_index*n_index*tmpNume;
+                }
+            }
+        }
+        
+        return xNum ? "x=" + to_string(Num/xNum) : Num ? "No solution":"Infinite solutions";
     }
-
-    FSStateBase()
-    {
-        cout << "base constructor called" << endl;
-    }
-    ~FSStateBase()
-    {
-
-    }
-
-private:
-
 };
-class FSState :public FSStateBase
-{
-public:
-    FSState(const FSState& other)
-    {
-        cout << "derive copy constructor called" << endl;
-    }
-    FSState()
-    {
-        cout << "derive constructor called" << endl;
-    }
-    ~FSState()
-    {
-
-    }
-};
-
-void foo(const FSStateBase& stat)
-{
-    cout << &stat << endl;
-}
-int main()
-{
-   FSState* m_state = new FSState();
-    cout << m_state << endl;
-    foo(m_state != nullptr ? *m_state : FSStateBase());//错误,基类会进行拷贝构造，
-  												  //三目运算符须保持分支类型一致，引用类型的转换不会进行拷贝构造
-  	foo(m_state != nullptr ? *m_state : (const FSStateBase&)FSStateBase());//正确
-    return 0;
-}
 ```
+
+
+
+
 
