@@ -67,7 +67,7 @@ vector<string_view> split(string &str, char ch) {
         }
 ```
 
-## 2.2string找子串
+## 2.2 string找子串
 
 ```c++
 //1408. 数组中的字符串匹配
