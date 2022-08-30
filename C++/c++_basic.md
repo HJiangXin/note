@@ -12,11 +12,13 @@ static关键字修饰的变量为类层级全局变量，可以直接用域操�
 
 ## STL容器
 
-- STL容器主要包括三大类deque、RB-Tree、hashtable
+- STL容器
 
-1. deque:双端队列，首位端都可添加或删除元素。基于deque衍生出 stack(栈)尾端入栈或出栈、以及queue(队列)尾端入队列，首端出队列。
-2. RB-Tree：红黑树，是关联型容器，衍生出set、multi_set、map、multi_map。
+1. deque:双端队列，双向，分段连续假连续，具备连续的特性(使用迭代器任意跳跃)，首位端都可添加或删除元素。基于deque衍生出 stack(栈)尾端入栈或出栈、以及queue(队列)尾端入队列，首端出队列，可以使用迭代器任意跳跃。
+2. RB-Tree：红黑树，双向，是关联型容器，衍生出set、multi_set、map、multi_map。
 3. hashtable：哈希表又称散列表，其容量大小一般选取质数，扩容时选取原容量*2后附近的质数，衍生出unordered_map、unordered_set。
+4. list：双向，存储空间在物理上不连续，使用指针连接，不可使用迭代器任意跳跃
+5. vector：连续空间，可使用迭代器任意跳跃
 
 ## C++继承问题
 
