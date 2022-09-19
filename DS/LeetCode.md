@@ -147,5 +147,35 @@ public:
 
 ## 2.3 test
 
+# 3.排序
+
+## 3.1 按照频率将数组升序排序  (sort排序)
+
+- [ ] LeetCode 1636
+
+```c++
+class Solution {
+public:
+    vector<int> frequencySort(vector<int>& nums) {
+    unordered_map<int,int> m_map;
+    for(int i = 0;i < nums.size();i++)
+    {
+        m_map[nums[i]]++;
+    }
+    sort(nums.begin(),nums.end(),[&](int a, int b){
+        if(m_map[a] == m_map[b])
+        {
+            return a>b;
+        }
+    return m_map[a] < m_map[b];
+    });
+
+    return nums;
+    }
+};
+```
+
+
+
 
 
