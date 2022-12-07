@@ -145,7 +145,21 @@ public:
 };
 ```
 
-## 2.3 test
+## 2.3 trim(去除前导零)
+
+```c++
+string trim(string &s)
+    {
+        int i = 0;
+        while(i < s.size() - 1 && s[i] == '0')
+        {
+            i++;
+        }
+        return s.substr(i);
+    }
+```
+
+
 
 # 3.排序
 
