@@ -159,6 +159,12 @@ string trim(string &s)
     }
 ```
 
+## 2.3 substring
+
+```c++
+s.substring(left+1,right-left-1);//左闭右开区间,第一个参数为剪切的起始点，第二个参数为剪切长度
+```
+
 
 
 # 3.排序
